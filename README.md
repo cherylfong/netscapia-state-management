@@ -21,3 +21,18 @@ The function returned by Zustand's create function e.g. `useCounterStore()` is a
 The helper functions `useCounter()` and `useCounterControls()` are also custom hooks because provide excess to member fields and functions within a custom hook function.
 
 [Custom hooks are expected to always start with the word `use`.](https://react.dev/warnings/invalid-hook-call-warning)
+
+Zustand's [documentation](https://zustand.docs.pmnd.rs/learn/guides/immutable-state-and-merging) should update states immutably. The proper way is to use a function such as `concat()` or [spread](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) syntax that does not modify the existing state.
+
+States created with Zustand is [immutable](https://developer.mozilla.org/en-US/docs/Glossary/Immutable), and the action functions that modify the state must be [pure functions](https://en.wikipedia.org/wiki/Pure_function).
+
+Pure functions produce no side effects and always return the same result when called with the same parameters.
+
+#### Uncontrolled Form
+
+A form that does not have its field's value bounded to the state of the App component is known as a [uncontrolled](https://react.dev/learn/sharing-state-between-components#controlled-and-uncontrolled-components) form.
+
+Some limitations to [uncontrolled forms](https://goshakkk.name/controlled-vs-uncontrolled-inputs-react/) are:
+
+- It cannot provide validation messages.
+- It cannot disable the submit button based on content.
