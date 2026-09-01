@@ -1,4 +1,3 @@
-
 import { create } from 'zustand'
 
 const anecdotesAtStart = [
@@ -10,7 +9,7 @@ const anecdotesAtStart = [
   'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.'
 ]
 
-const getId = () => (100000 * Math.random()).toFixed(0)
+export const getId = () => (100000 * Math.random()).toFixed(0)
 
 const asObject = anecdote => ({
   content: anecdote,
@@ -20,7 +19,19 @@ const asObject = anecdote => ({
 
 const useAnecdoteStore = create((set) => ({
   anecdotes: anecdotesAtStart.map(asObject),
-  actions: {},
+  actions: {
+    add: anecdote  => set(
+      state => ({ anecdotes: [...state.anecdotes, anecdote]})
+    ),
+    vote: id => set( 
+      state => ({
+      anecdotes: state.anecdotes.map(a => a.id === id ? {
+        ...a, votes: a.votes +1
+      } : a )
+    }))
+  },
 }))
 
 export const useAnecdotes = () => useAnecdoteStore((state) => state.anecdotes)
+
+export const useAnecdotesActions = () => useAnecdoteStore((state) => state.actions)
