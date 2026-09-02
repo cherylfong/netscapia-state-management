@@ -7,7 +7,7 @@ const Anecdote = ({ anecdote }) => {
 
     const voteHandler = () => {
         vote(anecdote.id)
-        setNotify(`You voted '${anecdote.content}'`)
+        setNotify(`you voted '${anecdote.content}'`)
         clearNotify()
     }
 
