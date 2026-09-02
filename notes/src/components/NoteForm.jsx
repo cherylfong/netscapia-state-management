@@ -1,14 +1,16 @@
 import { useNoteActions } from '../store'
 
-const generateId = () => Number((Math.random() * 1000000).toFixed(0))
+// const generateId = () => Number((Math.random() * 1000000).toFixed(0))
 
 const NoteForm = () => {
     const { add } = useNoteActions()
 
-    const addNote = (e) => {
+    const addNote = async (e) => {
         e.preventDefault()
         const content = e.target.note.value
-        add({ id: generateId(), content, important: false })
+        // gets back an object describing the note, the backend generates an id
+        await add(content)
+        add(newNote)
         e.target.reset()
     }
 
