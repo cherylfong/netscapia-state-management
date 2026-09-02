@@ -49,10 +49,6 @@ const useNoteStore = create((set, get) => ({
       const newNote = await noteService.createNew(content)
       set(state => ({ notes: state.notes.concat(newNote) }))
     },
-    initialize: async () => {
-      const notes = await noteService.getAll()
-      set(() => ({ notes }))
-    },
   }
 }))
 
