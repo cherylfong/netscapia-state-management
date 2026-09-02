@@ -10,7 +10,6 @@ const NoteForm = () => {
         const content = e.target.note.value
         // gets back an object describing the note, the backend generates an id
         await add(content)
-        add(newNote)
         e.target.reset()
     }
 
