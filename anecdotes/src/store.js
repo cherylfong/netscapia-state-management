@@ -3,7 +3,7 @@ import anecdoteService from './services/anecdote'
 
 export const getId = () => (100000 * Math.random()).toFixed(0)
 
-const useAnecdoteStore = create((set) => ({
+const useAnecdoteStore = create((set, get) => ({
   anecdotes: [],
   filter: '',
   actions: {
@@ -15,12 +15,15 @@ const useAnecdoteStore = create((set) => ({
       const anecdote = await anecdoteService.createNew(content)
       set(state => ({ anecdotes: [...state.anecdotes, anecdote] }))
     },
-    vote: id => set(
-      state => ({
-        anecdotes: state.anecdotes.map(a => a.id === id ? {
-          ...a, votes: a.votes + 1
-        } : a)
-      })),
+    vote: async (id) => {
+      const anecdote = get().anecdotes.find(n => n.id === id)
+      const updated = await anecdoteService.update(
+        id, { ...anecdote, votes: anecdote.votes + 1 }
+      )
+      set(state => ({
+          anecdotes: state.anecdotes.map(a => a.id === id ?updated : a)
+        }))
+    },
     setFilter: value => set(() => ({ filter: value }))
   },
 }))
