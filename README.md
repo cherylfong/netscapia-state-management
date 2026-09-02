@@ -28,6 +28,10 @@ States created with Zustand is [immutable](https://developer.mozilla.org/en-US/d
 
 Pure functions produce no side effects and always return the same result when called with the same parameters.
 
+[Best practice](https://tkdodo.eu/blog/working-with-zustand#keep-the-scope-of-your-store-small) indicates that unrelated functions and objects should have their own store.
+
+[`useShallow()`](https://zustand.docs.pmnd.rs/reference/hooks/use-shallow) can [prevent unnecessary re-rendering](https://fullstackopen.com/en/part6/complex_state_fetch_testing#:~:text=A%20possible%20alternative%20solution) e.g.(new object creation) by using shallow copies that do not take references into account.
+
 #### Uncontrolled Form
 
 A form that does not have its field's value bounded to the state of the App component is known as a [uncontrolled](https://react.dev/learn/sharing-state-between-components#controlled-and-uncontrolled-components) form.
