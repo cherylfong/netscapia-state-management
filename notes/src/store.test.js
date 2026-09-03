@@ -13,7 +13,7 @@ import noteService from './services/notes'
 import useNoteStore, { useNotes, useFilter, useNoteActions } from './store'
 
 beforeEach(() => {
-.setState({ notes: [], filter: '' })
+useNoteStore.setState({ notes: [], filter: '' })
   vi.clearAllMocks()
 })
 
