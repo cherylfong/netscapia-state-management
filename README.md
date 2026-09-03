@@ -1,5 +1,32 @@
 This is part 6 of the fullstack open course by <https://studies.cs.helsinki.fi>
 
+### Github Actions Test Status
+
+<details>
+<summary>part6-a</summary>
+
+[![Unicafe tests](https://github.com/cherylfong/netscapia-state-management/actions/workflows/unicafe-tests.yml/badge.svg)](https://github.com/cherylfong/netscapia-state-management/actions/workflows/unicafe-tests.yml)
+
+</details>
+
+<details>
+<summary>part6-d</summary>
+
+[![Anecdotes tests](https://github.com/cherylfong/netscapia-state-management/actions/workflows/anecdotes-tests.yml/badge.svg)](https://github.com/cherylfong/netscapia-state-management/actions/workflows/anecdotes-tests.yml)
+
+[![Anecdotes tests check](https://github.com/cherylfong/netscapia-state-management/actions/workflows/anecdotes-test-tests.yml/badge.svg)](https://github.com/cherylfong/netscapia-state-management/actions/workflows/anecdotes-test-tests.yml)
+
+</details>
+
+<details>
+<summary>part6-c</summary>
+
+[![Query anecdotes tests 1](https://github.com/cherylfong/netscapia-state-management/actions/workflows/query-anecdotes-tests1.yml/badge.svg)](https://github.com/cherylfong/netscapia-state-management/actions/workflows/query-anecdotes-tests1.yml)
+
+[![Query anecdotes tests 2](https://github.com/cherylfong/netscapia-state-management/actions/workflows/query-anecdotes-tests2.yml/badge.svg)](https://github.com/cherylfong/netscapia-state-management/actions/workflows/query-anecdotes-tests2.yml)
+</details>
+
+
 ### Part 6 sub a. | Flux-architecture and Zustand
 
 Prior to Part 6, React's useState was the primary method for state management.
