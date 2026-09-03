@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import noteService from './services/notes'
+import { devtools } from 'zustand/middleware'
 
 const initialNotes = [
   {
@@ -18,7 +19,7 @@ const initialNotes = [
 ]
 
 
-const useNoteStore = create((set, get) => ({
+const useNoteStore = create(devtools((set, get) => ({
   notes: [],
   filter: 'all',
   actions: {
@@ -46,7 +47,7 @@ const useNoteStore = create((set, get) => ({
     },
     setFilter: value => set(() => ({ filter: value })),
   }
-}))
+})))
 
 export const useNotes = () => {
   const notes = useNoteStore((state) => state.notes)
@@ -57,3 +58,6 @@ export const useNotes = () => {
 }
 export const useFilter = () => useNoteStore((state) => state.filter)
 export const useNoteActions = () => useNoteStore(state => state.actions)
+
+
+export default useNoteStore
