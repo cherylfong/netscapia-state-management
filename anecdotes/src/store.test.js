@@ -57,3 +57,46 @@ describe('useNoteActions', () => {
 
     })
 }) // useNoteActions describe
+
+
+describe('useAnecdotes filtering: the correct component receives properly filtered list of anecdotes', () => {
+    const mockAnecdotes = [{ id: 1, content: 'Test1', votes: 1 }, { id: 2, content: 'Test2', votes: 2 }, { id: 3, content: 'Test3', votes: 3 }]
+
+    beforeEach(() => {
+        useAnecdoteStore.setState({ anecdotes: mockAnecdotes, filter: '' })
+    })
+
+    it('returns all anecdotes with no filter', () => {
+
+        const { result } = renderHook(() => useAnecdotes())
+        expect(result.current).toHaveLength(3)
+    })
+
+    it('filters for specific anecdotes', () => {
+        useAnecdoteStore.setState({ anecdotes: mockAnecdotes, filter: 'Test3' })
+        let { result } = renderHook(() => useAnecdotes())
+        expect(result.current).toEqual([mockAnecdotes[2]])
+
+        useAnecdoteStore.setState({ anecdotes: mockAnecdotes, filter: 'Test2' })
+        result = renderHook(() => useAnecdotes()).result
+        expect(result.current).toEqual([mockAnecdotes[1]])
+
+        useAnecdoteStore.setState({ anecdotes: mockAnecdotes, filter: 'Test1' })
+        result = renderHook(() => useAnecdotes()).result
+        expect(result.current).toEqual([mockAnecdotes[0]])
+    })
+
+    it('filter that matches no anecdotes deliberately', () => {
+
+        const { result } = renderHook(() => useAnecdotes())
+    
+        act(() => {
+            useAnecdoteStore.setState({
+                anecdotes: mockAnecdotes,
+                filter: 'Test4',
+            })
+        })
+
+        expect(result.current).toEqual([])
+    })
+})
