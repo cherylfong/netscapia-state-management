@@ -32,8 +32,6 @@ Pure functions produce no side effects and always return the same result when ca
 
 [`useShallow()`](https://zustand.docs.pmnd.rs/reference/hooks/use-shallow) can [prevent unnecessary re-rendering](https://fullstackopen.com/en/part6/complex_state_fetch_testing#:~:text=A%20possible%20alternative%20solution) e.g.(new object creation) by using shallow copies that do not take references into account.
 
-Zustand has ready-made devtools middleware that can integrate the store with the browser's Devtools such as [Redux Devtool](https://chromewebstore.google.com/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd). 
-
 #### Uncontrolled Form
 
 A form that does not have its field's value bounded to the state of the App component is known as a [uncontrolled](https://react.dev/learn/sharing-state-between-components#controlled-and-uncontrolled-components) form.
@@ -42,3 +40,50 @@ Some limitations to [uncontrolled forms](https://goshakkk.name/controlled-vs-unc
 
 - It cannot provide validation messages.
 - It cannot disable the submit button based on content.
+
+#### Middleware
+
+**A way to log the state of a Zustand store** using a wrapper known as a middleware.
+
+```javascript
+const logger = (config) => (set, get) => config(
+  (...args) => {
+    console.log('prev state', get());
+    set(...args);
+    console.log('next state', get());
+  },
+  get
+);
+```
+
+For example, `logger` can be wrapped around a store:
+
+```javascript
+const useNoteStore = create(logger((set, get) => ({
+  notes: [],
+  filter: '',
+  actions: {
+    // ...
+  }
+
+})))
+```
+
+Or by using **Zustand middleware devtool**:
+
+```javascript
+import { create } from 'zustand'
+import { devtools } from 'zustand/middleware'
+
+
+const useNoteStore = create(devtools((set, get) => ({
+  notes: [],
+  filter: '',
+  actions: {
+    // ...
+  }
+
+})))
+```
+
+Using Zustand's ready-made devtools middleware allows integrating the store with the browser's devtool extension such as [Redux Devtool](https://chromewebstore.google.com/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd).
