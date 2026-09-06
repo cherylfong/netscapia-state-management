@@ -114,3 +114,12 @@ const useNoteStore = create(devtools((set, get) => ({
 ```
 
 Using Zustand's ready-made devtools middleware allows integrating the store with the browser's devtool extension such as [Redux Devtool](https://chromewebstore.google.com/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd).
+
+#### TanStack Query
+
+Installation: `npm install @tanstack/react-query`
+
+Benefits of using [TanStack Query](https://tanstack.com/query/latest):
+
+> Data can be retrieved the server and rendered to the screen without using React hooks `useState` and `useEffect` from in chapters 2-5. The data on the server is can be entirely under the administration of the TanStack Query library.
+
