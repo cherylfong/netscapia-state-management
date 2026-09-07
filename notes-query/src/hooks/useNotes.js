@@ -29,8 +29,8 @@ export const useNotes = () => {
   return {
     notes: result.data,
     isPending: result.isPending,
-    addNote: (content) => newNoteMutation.mutate({ 
-        content, important: true 
+    addNote: (content) => newNoteMutation.mutate({
+      content, important: true
     }),
     toggleImportance: (note) => updateNoteMutation.mutate({ ...note, important: !note.important }),
   }
