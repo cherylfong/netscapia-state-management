@@ -1,13 +1,10 @@
 import { useContext } from 'react'
-import CounterContext from './CounterContext'
+
+import CounterContext from '../components/CounterContext'
 
 const Controls = () => {
+ const { increment, decrement, zero } = useContext(CounterContext)
 
-  const { counter, setCounter } = useContext(CounterContext)
-
-  const increment = () => setCounter(counter + 1)
-  const decrement = () => setCounter(counter - 1)
-  const zero = () => setCounter(0)
 
   return (
     <div>
@@ -17,5 +14,4 @@ const Controls = () => {
     </div>
   )
 }
-
 export default Controls
