@@ -1,4 +1,4 @@
-This is part 6 of the fullstack open course by <https://studies.cs.helsinki.fi>
+This is [part 6 of the fullstack open course](https://fullstackopen.com/en/part6) by <https://studies.cs.helsinki.fi>
 
 ### Github Actions Test Status
 
