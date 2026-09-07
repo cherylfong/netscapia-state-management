@@ -129,3 +129,9 @@ Benefits of using [TanStack Query](https://tanstack.com/query/latest):
 TanStack Query is a **server-state** library, responsible for managing asynchronous operations between your server and client.
 
 Zustand is a **client-state** library that can be used to store asynchronous data, albeit inefficiently when compared to a tool like TanStack Query.
+
+#### Context API
+
+React's built-in [Context API](https://react.dev/learn/passing-data-deeply-with-context) offers a solution to [prop-drilling](https://kentcdodds.com/blog/prop-drilling) which is having to pass props from the app down to each nested component to the actual component that needs the prop.
+
+A simple implementation can be done by using `createContext()`, `CounterContext.Provider`, and `useContext()`.
