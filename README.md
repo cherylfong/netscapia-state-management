@@ -23,7 +23,7 @@ This is part 6 of the fullstack open course by <https://studies.cs.helsinki.fi>
 
 [![Query anecdotes tests 1](https://github.com/cherylfong/netscapia-state-management/actions/workflows/query-anecdotes-tests1.yml/badge.svg)](https://github.com/cherylfong/netscapia-state-management/actions/workflows/query-anecdotes-tests1.yml)
 
-[![Query anecdotes tests 2](https://github.com/cherylfong/netscapia-state-management/actions/workflows/query-anecdotes-tests2.yml/badge.svg)](https://github.com/cherylfong/netscapia-state-management/actions/workflows/query-anecdotes-tests2.yml)
+[![Query anecdotes tests 2](https://github.com/cherylfong/netscapia-state-management/actions/workflows/query-anecdotes-tests2.yml/badge.svg?branch=part6-c)](https://github.com/cherylfong/netscapia-state-management/actions/workflows/query-anecdotes-tests2.yml)
 </details>
 
 ### Part 6 sub a. | Flux-architecture and Zustand
