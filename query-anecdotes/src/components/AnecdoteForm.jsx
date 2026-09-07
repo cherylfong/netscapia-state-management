@@ -1,9 +1,15 @@
+import { useAnecdotes } from '../hooks/useAnecdotes'
+
 const AnecdoteForm = () => {
-  const onCreate = (event) => {
+
+  const { addAnecdote: addAnecdoteToServer } = useAnecdotes()
+
+  const onCreate = async (event) => {
     event.preventDefault()
     const content = event.target.anecdote.value
     event.target.reset()
-    console.log('new anecdote')
+    console.log(content)
+    await addAnecdoteToServer(content)
   }
 
   return (
