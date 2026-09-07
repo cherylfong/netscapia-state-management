@@ -26,7 +26,6 @@ This is part 6 of the fullstack open course by <https://studies.cs.helsinki.fi>
 [![Query anecdotes tests 2](https://github.com/cherylfong/netscapia-state-management/actions/workflows/query-anecdotes-tests2.yml/badge.svg)](https://github.com/cherylfong/netscapia-state-management/actions/workflows/query-anecdotes-tests2.yml)
 </details>
 
-
 ### Part 6 sub a. | Flux-architecture and Zustand
 
 Prior to Part 6, React's useState was the primary method for state management.
@@ -122,4 +121,11 @@ Installation: `npm install @tanstack/react-query`
 Benefits of using [TanStack Query](https://tanstack.com/query/latest):
 
 > Data can be retrieved the server and rendered to the screen without using React hooks `useState` and `useEffect` from in chapters 2-5. The data on the server is can be entirely under the administration of the TanStack Query library.
+>
+> Simplifies data processing from server and can eliminate the need for data from the server to be saved in the frontend state.
 
+##### TanStack vs Zustand
+
+TanStack Query is a **server-state** library, responsible for managing asynchronous operations between your server and client.
+
+Zustand is a **client-state** library that can be used to store asynchronous data, albeit inefficiently when compared to a tool like TanStack Query.
