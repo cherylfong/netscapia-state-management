@@ -135,3 +135,11 @@ Zustand is a **client-state** library that can be used to store asynchronous dat
 React's built-in [Context API](https://react.dev/learn/passing-data-deeply-with-context) offers a solution to [prop-drilling](https://kentcdodds.com/blog/prop-drilling) which is having to pass props from the app down to each nested component to the actual component that needs the prop.
 
 A simple implementation can be done by using `createContext()`, `CounterContext.Provider`, and `useContext()`.
+
+#### Deciding Which State Management to Use
+
+React's `useState` and `useEffect` hook are good enough for simple applications and is a good enough staring point. However, is prone to _prop drilling_ as the application grows with more components. Using React's Context library can help alleviate this issue.
+
+Using more than one state management library is sometimes necessary, the approach is to use whatever is best suited for the objective and appropriate within a timeframe for completion. But also remember and be willing to pivot to a different library when the objective changes or when the particular library is no longer suitable with the code structure.
+
+The difficulty is knowing how to leverage the pros and cons of each state management library depending on the use case.
