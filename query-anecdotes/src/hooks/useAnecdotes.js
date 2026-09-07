@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 
-import { getAnecdotes, createAnecdote } from '../requests'
+import { getAnecdotes, createAnecdote, updateVotes } from '../requests'
 
 export const useAnecdotes = () => {
 
@@ -20,7 +20,12 @@ export const useAnecdotes = () => {
         }
     })
 
-
+    const updateVoteMutation = useMutation({
+        mutationFn: updateVotes,
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['anecdotes'] })
+        }
+    })
 
     return {
         anecdotes: result.data,
@@ -28,5 +33,8 @@ export const useAnecdotes = () => {
         addAnecdote: (content) => newAnecdoteMutation.mutate({
             content, votes: 0
         }),
+        handleVote: (anecdote) => updateVoteMutation.mutate({
+            ...anecdote, votes: anecdote.votes + 1
+        })
     }
 }

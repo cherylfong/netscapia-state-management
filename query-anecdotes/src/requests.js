@@ -28,3 +28,19 @@ if(newAnecdote.content.length < 5){
  
   return await response.json()
 }
+
+export const updateVotes = async (updatedAnecdote) => {
+  const options = {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(updatedAnecdote)
+  }
+
+  const response = await fetch(`${baseUrl}/${updatedAnecdote.id}`, options)
+
+  if (!response.ok) {
+    throw new Error('Failed to update votes')
+  }
+
+  return await response.json()
+}
