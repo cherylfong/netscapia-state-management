@@ -1,8 +1,10 @@
+import { useEffect, useState } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 
 import { getAnecdotes, createAnecdote, updateVotes } from '../requests'
 
 export const useAnecdotes = () => {
+    const [isPendingTimeout, setIsPendingTimeout] = useState(false)
 
     const queryClient = useQueryClient()
 
@@ -11,6 +13,20 @@ export const useAnecdotes = () => {
         queryFn: getAnecdotes,
         refetchOnWindowFocus: false
     })
+
+    // if isPending is more than 3000 miliseconds then set IsPendingTimeout to true
+    useEffect(() => {
+        if (!result.isPending) {
+            setIsPendingTimeout(false)
+            return undefined
+        }
+
+        const timeoutId = setTimeout(() => {
+            setIsPendingTimeout(true)
+        }, 3000)
+
+        return () => clearTimeout(timeoutId)
+    }, [result.isPending])
 
     const newAnecdoteMutation = useMutation({
         mutationFn: createAnecdote,
@@ -30,6 +46,8 @@ export const useAnecdotes = () => {
     return {
         anecdotes: result.data,
         isPending: result.isPending,
+        isPendingTimeout,
+        isError: result.isError,
         addAnecdote: (content) => newAnecdoteMutation.mutate({
             content, votes: 0
         }),

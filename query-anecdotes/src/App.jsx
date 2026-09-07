@@ -5,9 +5,15 @@ import { useAnecdotes } from './hooks/useAnecdotes'
 
 const App = () => {
 
-  const { anecdotes, isPending, handleVote } = useAnecdotes()
+  const { anecdotes, isPending, isPendingTimeout, handleVote, isError} = useAnecdotes()
+
+  if(isError) return <div>anecdote service not available due to problems in server</div>
 
   if (isPending) {
+    if (isPendingTimeout) {
+      return <div>anecdote service not available due to problems in server</div>
+    }
+
     return <div>loading data...</div>
   }
 
