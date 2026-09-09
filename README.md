@@ -10,7 +10,7 @@ This is [part 6 of the fullstack open course](https://fullstackopen.com/en/part6
 </details>
 
 <details>
-<summary>part6-d</summary>
+<summary>part6-b</summary>
 
 [![Anecdotes tests](https://github.com/cherylfong/netscapia-state-management/actions/workflows/anecdotes-tests.yml/badge.svg)](https://github.com/cherylfong/netscapia-state-management/actions/workflows/anecdotes-tests.yml)
 
